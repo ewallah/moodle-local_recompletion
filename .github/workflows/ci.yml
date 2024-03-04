@@ -125,5 +125,5 @@ jobs:
 
       - name: admin xmldb
         if: ${{ !cancelled() }}
-        run: moodle-plugin-ci --ansi behat --auto-rerun=0 --profile chrome admin/tool/xmldb
+        run: moodle-plugin-ci --ansi behat --auto-rerun=0 --profile chrome admin/tool/xmldb --start-servers
         working-directory: moodle
