@@ -120,7 +120,7 @@ jobs:
 
       - name: admin bookmarks
         if: ${{ !cancelled() }}
-        run: moodle-plugin-ci --ansi behat --auto-rerun=0 --profile chrome blocks/admin_bookmarks
+        run: moodle-plugin-ci --ansi behat --auto-rerun=0 --profile chrome blocks/admin_bookmarks --start-servers
         working-directory: moodle
 
       - name: admin xmldb
