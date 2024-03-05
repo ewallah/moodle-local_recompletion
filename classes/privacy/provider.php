@@ -271,7 +271,7 @@ class provider implements
 
             $records = $DB->get_records('local_recompletion_ssv', $params);
             foreach ($records as $record) {
-                $context = \context_course::instance($record->course);
+                $context = \context_course::instance($record->courseid);
                 writer::with_context($context)->export_data(
                     [get_string('recompletion', 'local_recompletion'), 'scorm_tracks'],
                     (object)[array_map([self::class, 'transform_db_row_to_session_data'], $records)]);
@@ -521,7 +521,7 @@ class provider implements
         $sql = "SELECT ctx.id
                   FROM {course} c
                   JOIN {context} ctx ON c.id = ctx.instanceid AND ctx.contextlevel = :contextlevel
-                  JOIN {local_recompletion_ssv} rc ON rc.course = c.id and rc.userid = :userid";
+                  JOIN {local_recompletion_ssv} rc ON rc.courseid = c.id and rc.userid = :userid";
         $contextlist->add_from_sql($sql, $params);
         $sql = "SELECT ctx.id
                   FROM {course} c
@@ -637,7 +637,7 @@ class provider implements
 
         $sql = "SELECT rc.userid
                   FROM {local_recompletion_ssv} rc
-                  JOIN {course} c ON rc.course = c.id
+                  JOIN {course} c ON rc.courseid = c.id
                   JOIN {context} ctx ON c.id = ctx.instanceid AND ctx.contextlevel = :contextlevel
                   WHERE ctx.id = :contextid";
         $userlist->add_from_sql('userid', $sql, $params);
@@ -781,7 +781,7 @@ class provider implements
 
         $sql = "SELECT rc.id
                   FROM {local_recompletion_ssv} rc
-                  JOIN {course} c ON rc.course = c.id
+                  JOIN {course} c ON rc.courseid = c.id
                   JOIN {context} ctx ON c.id = ctx.instanceid AND ctx.contextlevel = :contextlevel
                   WHERE ctx.id = :contextid AND rc.userid $insql";
         $DB->delete_records_select('local_recompletion_ssv', "id $sql", $params);
