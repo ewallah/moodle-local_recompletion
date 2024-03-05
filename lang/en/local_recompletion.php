@@ -143,6 +143,7 @@ $string['privacy:metadata:viewed'] = 'If the activity was viewed';
 $string['privacy:metadata:attempt'] = 'The attempt number';
 $string['privacy:metadata:scorm_attempt'] = 'Archive of previous SCORM attempts.';
 $string['privacy:metadata:scorm_scoes_value'] = 'Archive of the tracked data of the SCOes belonging to the activity';
+$string['privacy:metadata:scormid'] = 'Scorm id';
 $string['privacy:metadata:local_recompletion_qr:questionnaireid'] = 'Questionnaire id';
 $string['privacy:metadata:local_recompletion_qr:submitted'] = 'Submitted';
 $string['privacy:metadata:local_recompletion_qr:complete'] = 'complete';
